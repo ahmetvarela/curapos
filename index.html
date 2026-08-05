@@ -1,0 +1,1853 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Cura · POS Inteligente</title>
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23c9a74d'/%3E%3Cg fill='none' stroke='%23151006' stroke-width='8' stroke-linecap='round'%3E%3Crect x='12' y='38' width='76' height='24' rx='12' transform='rotate(45 50 50)'/%3E%3Crect x='12' y='38' width='76' height='24' rx='12' transform='rotate(-45 50 50)'/%3E%3C/g%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./pos-home-3d.css" />
+  <link rel="stylesheet" href="./pos-enhance.css" />
+  <script src="./pos-home-3d.js" defer></script>
+  <script src="./pos-enhance.js" defer></script>
+</head>
+
+<template id="__bundler_thumbnail" data-bg-color="#050505">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#050505" />
+    <g fill="none" stroke="#c9a74d" stroke-width="34" stroke-linecap="round" transform="translate(600 360)">
+      <rect x="-150" y="-55" width="300" height="110" rx="55" transform="rotate(45)" />
+      <rect x="-150" y="-55" width="300" height="110" rx="55" transform="rotate(-45)" />
+    </g>
+    <text x="600" y="600" font-family="Sora, Arial, sans-serif" font-size="92" font-weight="800" fill="#ffe39a" text-anchor="middle" letter-spacing="4">CURA</text>
+    <text x="600" y="666" font-family="Arial, sans-serif" font-size="34" fill="#b9b2a2" text-anchor="middle" letter-spacing="2">Sistema inteligente</text>
+  </svg>
+</template>
+
+<body>
+  <main class="pos-page" id="posPage">
+    <div class="grid-bg"></div>
+    <div class="gold-glow glow-one"></div>
+    <div class="gold-glow glow-two"></div>
+    <div class="blue-glow"></div>
+
+    <header class="topbar">
+      <a href="/iconos" class="brand" aria-label="Ir al menú principal">
+        <span class="brand-mark">
+          <svg class="logo-svg" viewBox="0 0 100 100" aria-hidden="true">
+            <g fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round">
+              <rect x="4" y="35" width="92" height="30" rx="15" transform="rotate(45 50 50)" />
+              <rect x="4" y="35" width="92" height="30" rx="15" transform="rotate(-45 50 50)" />
+            </g>
+          </svg>
+        </span>
+        <span class="brand-text">
+          <strong>Cura</strong>
+          <small>Sistema inteligente</small>
+        </span>
+      </a>
+
+      <nav class="nav-links social-links" aria-label="Redes sociales y contacto">
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2.5" y="2.5" width="19" height="19" rx="5.5" />
+            <circle cx="12" cy="12" r="4.4" />
+            <circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none" />
+          </svg>
+        </a>
+
+        <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M13.5 21v-7h2.4l.4-3h-2.8V9.1c0-.9.3-1.5 1.6-1.5h1.3V4.9c-.2 0-1-.1-1.9-.1-1.9 0-3.3 1.2-3.3 3.4V11H8.5v3h2.7v7h2.3z" />
+          </svg>
+        </a>
+
+        <a href="https://www.tiktok.com/" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M16.6 3c.3 1.8 1.5 3.2 3.4 3.5v3c-1.3 0-2.5-.4-3.4-1.1v6.4c0 3.4-2.4 5.7-5.5 5.7-3 0-5.1-2.1-5.1-4.9 0-2.9 2.3-5 5.4-5 .3 0 .6 0 .9.1v3.1c-.3-.1-.6-.2-.9-.2-1.4 0-2.4.9-2.4 2 0 1.1.9 1.9 2.1 1.9 1.4 0 2.5-1 2.5-2.8V3h3z" />
+          </svg>
+        </a>
+
+        <a href="https://wa.me/570000000000" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2.5A9.4 9.4 0 0 0 2.6 11.9c0 1.7.4 3.3 1.2 4.7L2.5 21.5l5-1.3a9.4 9.4 0 0 0 4.5 1.1 9.4 9.4 0 1 0 0-18.8zm0 17a7.6 7.6 0 0 1-3.9-1.1l-.3-.2-2.9.8.8-2.9-.2-.3a7.5 7.5 0 1 1 6.5 3.7zm4.2-5.6c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1a6.2 6.2 0 0 1-3.1-2.7c-.2-.4 0-.5.1-.7l.5-.6c.1-.2.1-.3 0-.5l-.7-1.8c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1.1 2.7c.1.2 1.8 2.8 4.4 3.9 2.2.9 2.6.7 3.1.7.5-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1 0-.1-.2-.2-.4-.3z" />
+          </svg>
+        </a>
+
+        <a href="tel:+570000000000" aria-label="Llamar por teléfono" title="Llamar">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M19.9 15.4l-3-1.3a1.3 1.3 0 0 0-1.5.4l-1 1.3a11.6 11.6 0 0 1-5.2-5.2l1.3-1a1.3 1.3 0 0 0 .4-1.5l-1.3-3A1.3 1.3 0 0 0 8.1 4.3l-2.7.6A1.3 1.3 0 0 0 4.4 6.2 15.6 15.6 0 0 0 17.8 19.6a1.3 1.3 0 0 0 1.3-1l.6-2.7a1.3 1.3 0 0 0-.8-1.5z" transform="rotate(-8 12 12)" />
+          </svg>
+        </a>
+      </nav>
+
+      <div class="topbar-actions">
+        <a href="#contacto" class="btn primary">Contactar</a>
+      </div>
+
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </header>
+
+    <nav class="mobile-menu" id="mobileMenu" aria-label="Menú móvil" aria-hidden="true">
+      <span class="mobile-menu-label">Conoce el sistema</span>
+      <a href="#inteligencia-pos">🧠 Funciones inteligentes</a>
+      <a href="#chat-ia-negocio">🤖 Chat IA Cura</a>
+      <a href="#fidelizacion-clientes">💌 Fidelización</a>
+      <a href="#niveles-clientes">🏅 Niveles de cliente</a>
+      <a href="#web-y-citas">🌐 Página web y pagos</a>
+      <a href="#agenda-citas">📅 Agenda de citas</a>
+      <a href="#empleados-control">👥 Empleados</a>
+      <a href="#facturacion-electronica">📄 Facturación electrónica</a>
+      <a href="#automatizacion-respaldo">🛡️ Automatización y respaldo</a>
+      <a href="#solucion-hibrida">⭐ Solución híbrida</a>
+      <span class="mobile-menu-label">Acceso al sistema</span>
+      <a href="/iconos">Todos los módulos</a>
+      <a href="#contacto" class="mobile-menu-cta">💬 Contactar / Quiero esto</a>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-content">
+        <div class="badge">
+          <span class="pulse-dot"></span>
+          Más que un POS: automatización + IA + análisis para tu negocio
+        </div>
+
+        <h1>
+          Habla con tu empresa con Cura IA
+          <span>y convierte tus datos en decisiones rentables</span>
+        </h1>
+
+        <p>
+          Automatiza tu empresa y enfócate en lo que más importa: vender y crecer.
+          El sistema se encarga del resto: administra la caja, controla el inventario,
+          maneja clientes, proveedores y empleados, genera facturas electrónicas,
+          lanza campañas automáticas y analiza cada número del negocio.
+          Es como tener un administrador que nunca descansa. Y si tienes una duda,
+          solo le preguntas a <strong style="color:var(--gold-light)">Cura IA</strong>
+          y en segundos tienes la respuesta.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#solucion-hibrida" class="btn primary">Ver solución híbrida</a>
+          <a href="#contacto" class="btn glass">💬 Quiero esto en mi negocio</a>
+        </div>
+
+        <div class="hero-offer-grid" aria-label="Oferta principal del sistema">
+          <article class="hero-offer-card">
+            <strong>Solución híbrida</strong>
+            <span>Software base robusto + personalización real para cada negocio.</span>
+          </article>
+
+          <article class="hero-offer-card hero-offer-card-gold">
+            <strong>2 funciones nuevas elegibles</strong>
+            <span>Se pueden agregar 2 funciones a la medida, siempre que sean viables y aterrizables.</span>
+          </article>
+
+          <article class="hero-offer-card">
+            <strong>🌐 Página web para tus clientes</strong>
+            <span>Tu negocio visible en internet y cobrando en línea con pasarela de pagos. <a href="#web-y-citas" class="offer-link">Ver más ↓</a></span>
+          </article>
+
+          <article class="hero-offer-card hero-offer-card-gold">
+            <strong>📅 Agenda de citas en línea</strong>
+            <span>Tus clientes reservan solos, 24/7 y sin llamadas. Tú solo atiendes. <a href="#agenda-citas" class="offer-link">Ver cómo funciona ↓</a></span>
+          </article>
+        </div>
+
+      </div>
+
+      <div class="hero-right">
+        <div class="visual-zone" id="visualZone">
+        <div class="logo-3d" aria-hidden="true">
+          <svg class="logo-layer logo-layer-back" viewBox="0 0 100 100">
+            <g fill="none" stroke="#7d6125" stroke-width="8">
+              <rect x="4" y="35" width="92" height="30" rx="15" transform="rotate(45 50 50)" />
+              <rect x="4" y="35" width="92" height="30" rx="15" transform="rotate(-45 50 50)" />
+            </g>
+          </svg>
+          <svg class="logo-layer logo-layer-mid" viewBox="0 0 100 100">
+            <g fill="none" stroke="#c9a74d" stroke-width="8">
+              <rect x="4" y="35" width="92" height="30" rx="15" transform="rotate(45 50 50)" />
+              <rect x="4" y="35" width="92" height="30" rx="15" transform="rotate(-45 50 50)" />
+            </g>
+          </svg>
+          <svg class="logo-layer logo-layer-front" viewBox="0 0 100 100">
+            <g fill="none" stroke="#ffe39a" stroke-width="8">
+              <rect x="4" y="35" width="92" height="30" rx="15" transform="rotate(45 50 50)" />
+              <rect x="4" y="35" width="92" height="30" rx="15" transform="rotate(-45 50 50)" />
+            </g>
+          </svg>
+        </div>
+
+        <div class="orbit orbit-main"></div>
+        <div class="orbit orbit-secondary"></div>
+
+        <div class="pos-terminal" id="posTerminal">
+          <div class="terminal-screen">
+            <div class="screen-top">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+
+            <div class="screen-title">VENTA ACTIVA</div>
+
+            <div class="sale-line">
+              <span>Producto</span>
+              <strong>$ 120.000</strong>
+            </div>
+
+            <div class="sale-line">
+              <span>IVA</span>
+              <strong>$ 22.800</strong>
+            </div>
+
+            <div class="sale-line">
+              <span>Caja</span>
+              <strong>$ 142.800</strong>
+            </div>
+
+            <div class="screen-total">
+              <span>Total</span>
+              <strong>$ 142.800</strong>
+            </div>
+          </div>
+
+          <div class="terminal-base">
+            <div class="reader"></div>
+            <div class="keys">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+
+        <a href="/ver-ventas" class="float-card card-ventas">
+          <span class="card-icon">🧾</span>
+          <strong>Ventas</strong>
+          <small>Historial, facturas, cobros y operación diaria.</small>
+        </a>
+
+        <a href="/resumen-financiero" class="float-card card-finanzas">
+          <span class="card-icon">📊</span>
+          <strong>Finanzas</strong>
+          <small>Utilidad, IVA, GMF, egresos, caja y margen real.</small>
+        </a>
+
+        <a href="/ver-caja" class="float-card card-contabilidad">
+          <span class="card-icon">🧮</span>
+          <strong>POS contabilidad</strong>
+          <small>Control financiero claro para administrar mejor.</small>
+        </a>
+
+        <a href="#chat-ia-negocio" class="float-card card-chat">
+          <span class="card-icon">🤖</span>
+          <strong>Chat con IA</strong>
+          <small>Pregúntale a Cura por utilidades, ventas, egresos, productos, empleados, proveedores y márgenes.</small>
+        </a>
+
+        <a href="#fidelizacion-clientes" class="float-card card-fidelizacion">
+          <span class="card-icon">💌</span>
+          <strong>Fidelización</strong>
+          <small>Campañas automáticas o personalizadas para clientes.</small>
+        </a>
+
+        <a href="#inteligencia-pos" class="float-card card-analisis">
+          <span class="card-icon">🧠</span>
+          <strong>Análisis inteligente</strong>
+          <small>Estima cuánto tiempo alcanza tu mercancía según ventas reales.</small>
+        </a>
+
+        <a href="#proveedores-inteligentes" class="float-card card-proveedores">
+          <span class="card-icon">🤝</span>
+          <strong>Compra con criterio</strong>
+          <small>Escoge el proveedor más conveniente para cada producto.</small>
+        </a>
+
+        <a href="#inteligencia-pos" class="float-card card-inventario-quieto">
+          <span class="card-icon">📦</span>
+          <strong>Inventario rentable</strong>
+          <small>Compra mejor, reduce mercancía estancada y evita pérdidas.</small>
+        </a>
+
+        <a href="#ritmo-venta" class="float-card card-ritmo">
+          <span class="card-icon">⏱️</span>
+          <strong>Ritmo de venta</strong>
+          <small>Detecta cuándo, cómo y por qué se venden tus productos.</small>
+        </a>
+
+        <a href="#inteligencia-pos" class="float-card card-recomienda">
+          <span class="card-icon">✨</span>
+          <strong>Analiza y recomienda</strong>
+          <small>Un POS que no solo vende: analiza, compara y recomienda.</small>
+        </a>
+        </div>
+
+        <div class="hero-stats">
+          <article>
+            <strong>Automatización</strong>
+            <span>Menos trabajo manual</span>
+          </article>
+
+          <article>
+            <strong>IA</strong>
+            <span>Pregúntale a tu empresa</span>
+          </article>
+
+          <article>
+            <strong>Rentabilidad</strong>
+            <span>Decisiones con datos reales</span>
+          </article>
+
+          <article>
+            <strong>Página web</strong>
+            <span>Visible para tus clientes + pasarela de pagos</span>
+          </article>
+
+          <article>
+            <strong>Citas en línea</strong>
+            <span>Reservas públicas con confirmación por correo</span>
+          </article>
+
+          <article>
+            <strong>Facturación electrónica</strong>
+            <span>Facturas, comprobantes y PDFs al instante</span>
+          </article>
+
+          <article>
+            <strong>Reportes 24/7</strong>
+            <span>Tus números disponibles a cualquier hora</span>
+          </article>
+
+          <article>
+            <strong>Campañas automáticas</strong>
+            <span>Correos que reactivan clientes solos</span>
+          </article>
+
+          <article>
+            <strong>Mapa de calor de ventas</strong>
+            <span>Ve los días y horas donde más vendes</span>
+          </article>
+
+          <article>
+            <strong>Análisis inteligente de productos</strong>
+            <span>Qué talla y qué color se vende más de cada producto</span>
+          </article>
+
+          <article>
+            <strong>Dashboard</strong>
+            <span>Todo tu negocio en una sola pantalla</span>
+          </article>
+
+          <article>
+            <strong>Comparte tus productos</strong>
+            <span>Envía cualquier producto a cualquier cliente por WhatsApp, correo o tu mensajería favorita</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="feature-ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <span>🧾 Ventas</span>
+        <span>💰 Caja</span>
+        <span>📊 Finanzas</span>
+        <span>🧮 Contabilidad</span>
+        <span>📦 Inventario</span>
+        <span>🤖 Chat IA Cura</span>
+        <span>💌 Fidelización</span>
+        <span>🤝 Proveedores</span>
+        <span>⏱️ Ritmo de venta</span>
+        <span>🧠 Diagnóstico</span>
+        <span>📄 Facturación electrónica</span>
+        <span>👥 Empleados</span>
+        <span>🧾 Ventas</span>
+        <span>💰 Caja</span>
+        <span>📊 Finanzas</span>
+        <span>🧮 Contabilidad</span>
+        <span>📦 Inventario</span>
+        <span>🤖 Chat IA Cura</span>
+        <span>💌 Fidelización</span>
+        <span>🤝 Proveedores</span>
+        <span>⏱️ Ritmo de venta</span>
+        <span>🧠 Diagnóstico</span>
+        <span>📄 Facturación electrónica</span>
+        <span>👥 Empleados</span>
+      </div>
+    </div>
+
+    <!-- ORDEN DE SECCIONES: 1 Chat IA · 2 Fidelización · 3 Web · 4 Proveedores · 5 Citas · 6 Facturación · 7 Finanzas -->
+
+    <section class="ai-chat-section" id="chat-ia-negocio">
+      <div class="ai-chat-panel">
+        <div class="ai-chat-copy">
+          <span>Chat IA del negocio</span>
+          <h2>Habla con tu empresa con Cura IA</h2>
+          <p>
+            Cura IA convierte el POS en una conversación con tu empresa.
+            <strong style="color:var(--gold-light)">Toca una pregunta</strong> y mira cómo responde
+            con utilidades, ventas, egresos, productos, empleados, proveedores, márgenes,
+            IVA, caja, clientes, inventario y campañas para decidir con datos reales.
+          </p>
+
+          <div class="ai-prompt-grid">
+            <article class="ai-prompt-card">
+              <strong>Finanzas</strong>
+              <span>Dime las ganancias de este mes, utilidad neta, egresos y caja final.</span>
+            </article>
+            <article class="ai-prompt-card">
+              <strong>Impuestos</strong>
+              <span>Pregúntale por IVA cobrado, descontable, saldo a favor o por pagar.</span>
+            </article>
+            <article class="ai-prompt-card">
+              <strong>Empleados</strong>
+              <span>Consulta comisiones, pagos, saldo pendiente y estado de cada empleado.</span>
+            </article>
+            <article class="ai-prompt-card">
+              <strong>Productos</strong>
+              <span>Descubre productos más rentables, margen, rotación y oportunidades.</span>
+            </article>
+          </div>
+        </div>
+
+        <div class="ai-chat-window ai-chat-window-large" aria-hidden="false">
+          <div class="ai-window-top">
+            <span></span>
+            <span></span>
+            <span></span>
+            <strong>Cura IA</strong>
+          </div>
+          <div class="ai-input-fake">Pregúntale a Cura IA sobre tu empresa…</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="loyalty-section" id="fidelizacion-clientes">
+      <div class="section-header">
+        <span>Fidelización inteligente</span>
+        <h2>Fideliza clientes y aumenta ventas con campañas automáticas</h2>
+        <p>
+          El sistema convierte la información de tus clientes en acciones comerciales
+          más inteligentes. Analiza quién compra más, quién es más rentable, qué productos
+          prefieren, qué categorías consumen y cuándo conviene enviar promociones para
+          fortalecer la recompra.
+        </p>
+      </div>
+
+      <div class="loyalty-panel">
+        <div class="loyalty-copy">
+          <span>Clientes, recompra y campañas</span>
+          <h2>Conoce mejor a tus clientes y vende de forma más inteligente</h2>
+          <p>
+            La plataforma no se queda en registrar clientes. También los clasifica por
+            puntos y rangos, identifica clientes frecuentes, detecta clientes inactivos
+            y permite activar campañas automáticas por correo con descuentos,
+            promociones o mensajes de reactivación.
+          </p>
+
+          <div class="loyalty-list">
+            <div>
+              <strong>01</strong>
+              <span>Clientes por puntos y rangos de fidelización.</span>
+            </div>
+            <div>
+              <strong>02</strong>
+              <span>Identificación de clientes más rentables y frecuentes.</span>
+            </div>
+            <div>
+              <strong>03</strong>
+              <span>Preferencias por producto, categoría, talla, color o variante.</span>
+            </div>
+            <div>
+              <strong>04</strong>
+              <span>Campañas automáticas por correo para clientes que llevan tiempo sin comprar.</span>
+            </div>
+            <div>
+              <strong>05</strong>
+              <span>Descuentos y promociones para recuperar compras y mover inventario.</span>
+            </div>
+            <div>
+              <strong>06</strong>
+              <span>Atención comercial más ágil desde celular o computador.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="loyalty-hologram" aria-hidden="true">
+          <div class="loyalty-ring"></div>
+
+          <div class="loyalty-phone">
+            <div class="phone-top"></div>
+            <div class="phone-card">
+              <small>Campaña automática</small>
+              <strong>15%</strong>
+              <span>Descuento de reactivación</span>
+            </div>
+            <div class="phone-message">
+              Te extrañamos. Tenemos una promoción especial para ti.
+            </div>
+            <div class="phone-button">Ver productos</div>
+          </div>
+
+          <div class="loyalty-chip loyalty-chip-one">Puntos</div>
+          <div class="loyalty-chip loyalty-chip-two">Rangos</div>
+          <div class="loyalty-chip loyalty-chip-three">Recompra</div>
+          <div class="loyalty-chip loyalty-chip-four">Correo automático</div>
+        </div>
+      </div>
+
+      <div class="loyalty-grid">
+        <article class="loyalty-card">
+          <div class="loyalty-icon">👑</div>
+          <h3>Clientes fieles</h3>
+          <p>
+            Clasifica clientes según su comportamiento de compra, frecuencia,
+            recompra y valor generado para el negocio.
+          </p>
+        </article>
+        <article class="loyalty-card">
+          <div class="loyalty-icon">💌</div>
+          <h3>Campañas automáticas</h3>
+          <p>
+            Reactiva clientes con correos automáticos, descuentos, promociones
+            y mensajes personalizados.
+          </p>
+        </article>
+        <article class="loyalty-card">
+          <div class="loyalty-icon">❤️</div>
+          <h3>Preferencias reales</h3>
+          <p>
+            Consulta productos favoritos, categorías preferidas y comportamiento
+            de compra de cada cliente.
+          </p>
+        </article>
+        <article class="loyalty-card">
+          <div class="loyalty-icon">📈</div>
+          <h3>Más recompra</h3>
+          <p>
+            Usa los datos del cliente para vender mejor, recuperar compradores
+            inactivos y aumentar la relación comercial.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="loyalty-section" id="niveles-clientes">
+      <div class="section-header">
+        <span>Niveles de cliente</span>
+        <h2>Bronce, plata, oro y diamante: sabe quién es quién</h2>
+        <p>
+          Cura POS clasifica automáticamente a cada cliente por niveles según cuánto
+          compra y qué tan rentable es para el negocio. Así identificas de un vistazo a
+          tus mejores compradores, a quiénes necesitan seguimiento y a quiénes conviene
+          reactivar con una campaña.
+        </p>
+      </div>
+
+      <div class="tier-grid">
+        <article class="tier-card" data-tier="bronce">
+          <div class="tier-badge">🥉</div>
+          <h3>Bronce</h3>
+          <p>Clientes nuevos o de compra ocasional. El punto de partida para hacerlos crecer con seguimiento y una primera promoción.</p>
+          <span class="tier-meta">Objetivo: lograr la segunda compra</span>
+        </article>
+
+        <article class="tier-card" data-tier="plata">
+          <div class="tier-badge">🥈</div>
+          <h3>Plata</h3>
+          <p>Ya compran con cierta frecuencia. Candidatos perfectos para subir de nivel con beneficios y atención cercana.</p>
+          <span class="tier-meta">Objetivo: aumentar la frecuencia</span>
+        </article>
+
+        <article class="tier-card" data-tier="oro">
+          <div class="tier-badge">🥇</div>
+          <h3>Oro</h3>
+          <p>Clientes frecuentes y rentables que sostienen buena parte de tus ventas. Merecen beneficios y trato preferente.</p>
+          <span class="tier-meta">Objetivo: retener y premiar</span>
+        </article>
+
+        <article class="tier-card" data-tier="diamante">
+          <div class="tier-badge">💎</div>
+          <h3>Diamante</h3>
+          <p>Tus clientes más valiosos y rentables. Promociones exclusivas, atención VIP y beneficios para que nunca se vayan.</p>
+          <span class="tier-meta">Objetivo: fidelidad total</span>
+        </article>
+      </div>
+
+      <div class="loyalty-panel">
+        <div class="loyalty-copy">
+          <span>Campañas segmentadas por nivel</span>
+          <h2>Cada cliente recibe la campaña correcta, en el momento correcto</h2>
+          <p>
+            Los niveles se conectan directamente con las campañas automáticas. En vez de
+            enviar el mismo mensaje a todos, Cura POS segmenta según el tipo de cliente,
+            su nivel, su historial de compras, su frecuencia o su rentabilidad, para que
+            cada correo tenga sentido y venda más.
+          </p>
+
+          <div class="loyalty-list">
+            <div>
+              <strong>💎</strong>
+              <span>Clientes diamante reciben promociones exclusivas y beneficios VIP.</span>
+            </div>
+            <div>
+              <strong>🔔</strong>
+              <span>Clientes frecuentes reciben beneficios para aumentar la retención.</span>
+            </div>
+            <div>
+              <strong>💤</strong>
+              <span>Clientes inactivos reciben campañas de reactivación con descuentos.</span>
+            </div>
+            <div>
+              <strong>🎯</strong>
+              <span>Segmentación por nivel, historial, frecuencia de compra o rentabilidad.</span>
+            </div>
+            <div>
+              <strong>📈</strong>
+              <span>Más recompra, clientes recuperados y mejores ventas con menos esfuerzo.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="loyalty-hologram" aria-hidden="true">
+          <div class="loyalty-ring"></div>
+
+          <div class="loyalty-phone">
+            <div class="phone-top"></div>
+            <div class="phone-card">
+              <small>Campaña · Nivel Diamante</small>
+              <strong>VIP</strong>
+              <span>Promoción exclusiva para tus mejores clientes</span>
+            </div>
+            <div class="phone-message">
+              Gracias por ser cliente diamante. Tenemos un beneficio especial solo para ti.
+            </div>
+            <div class="phone-button">Ver mi beneficio</div>
+          </div>
+
+          <div class="loyalty-chip loyalty-chip-one">Bronce</div>
+          <div class="loyalty-chip loyalty-chip-two">Plata</div>
+          <div class="loyalty-chip loyalty-chip-three">Oro</div>
+          <div class="loyalty-chip loyalty-chip-four">Diamante</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cube-showcase-section" id="web-y-citas">
+      <div class="section-header">
+        <span>Página web del negocio</span>
+        <h2>Tu negocio visible en internet, siempre abierto</h2>
+        <p>
+          No es solo un POS interno. Incluye una página web pública donde tus
+          clientes te encuentran, conocen tus productos y servicios, y te pagan
+          en línea con pasarela de pagos.
+        </p>
+      </div>
+
+      <div class="cube-showcase">
+        <div class="cube-copy">
+          <h3>🌐 Tu página web, con pagos en línea</h3>
+          <p>
+            Una página pública que tus clientes pueden visitar para conocer tu
+            negocio, tus servicios y tus productos, con opción de integrar una
+            pasarela de pagos para cobrar directo desde internet.
+          </p>
+
+          <div class="cube-tags">
+            <span>Página pública</span>
+            <span>Pasarela de pagos</span>
+            <span>Catálogo de servicios</span>
+            <span>Abierta 24/7</span>
+            <span>Para tus clientes</span>
+          </div>
+
+          <a href="#contacto" class="btn primary">Quiero esto en mi negocio</a>
+        </div>
+
+        <div class="cube-visual-area" id="cubeVisualArea">
+          <div class="cube-orbit"></div>
+
+          <div class="cube-wrap" id="cubeWrap">
+            <div class="cube">
+              <div class="face front"><span>WEB</span></div>
+              <div class="face back"><span>PAGOS</span></div>
+              <div class="face right"><span>CLIENTES</span></div>
+              <div class="face left"><span>CATÁLOGO</span></div>
+              <div class="face top"><span>24/7</span></div>
+              <div class="face bottom"><span>POS</span></div>
+            </div>
+          </div>
+
+          <div class="cube-floating-card cube-card-one">
+            <div class="cube-card-icon">🌐</div>
+            <h3>Te encuentran en internet</h3>
+            <p>Página visible para tus clientes, siempre abierta.</p>
+          </div>
+
+          <div class="cube-floating-card cube-card-two">
+            <div class="cube-card-icon">💳</div>
+            <h3>Cobra en línea</h3>
+            <p>Pasarela de pagos integrada a tu página.</p>
+          </div>
+
+          <div class="cube-floating-card cube-card-three">
+            <div class="cube-card-icon">🛍️</div>
+            <h3>Muestra lo que vendes</h3>
+            <p>Tus productos y servicios visibles para todos.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 8: DIAGNÓSTICO INTELIGENTE -->
+    <section class="diagnostic-section" id="diagnostico-productos">
+      <div class="section-header">
+        <span>Diagnóstico inteligente de productos</span>
+        <h2>Deja de comprar por intuición y empieza a ganar con datos reales</h2>
+        <p>
+          El sistema clasifica automáticamente cada producto según su comportamiento real:
+          cuáles están generando dinero, cuáles llevan meses sin moverse y cuáles están
+          hundiendo tu rentabilidad sin que te des cuenta.
+        </p>
+      </div>
+
+      <div class="diagnostic-panel">
+        <div class="diagnostic-copy">
+          <span>Inventario con criterio financiero</span>
+          <h2>Compra mejor, vende más y reduce mercancía estancada</h2>
+          <p>
+            Con un vistazo sabes qué reponer, qué promover urgente, qué está consumiendo
+            capital sin retorno y qué productos están a punto de agotarse. Además,
+            el <strong style="color:var(--gold-light)">Reporte Comparativo Inteligente</strong>
+            te dice si hoy fue mejor o peor que antes: ventas, unidades, utilidad,
+            margen y alertas, todo explicado en lenguaje claro.
+          </p>
+
+          <div class="diagnostic-list">
+            <div>
+              <strong>⭐</strong>
+              <span>Clasificación automática: estrella, dormido, sin movimiento, bajo stock o pérdida.</span>
+            </div>
+            <div>
+              <strong>💰</strong>
+              <span>Calcula el dinero quieto en inventario para que no sigas pagando por mercancía sin salida.</span>
+            </div>
+            <div>
+              <strong>📊</strong>
+              <span>Analiza utilidad bruta, margen real, unidades vendidas y rotación de cada referencia.</span>
+            </div>
+            <div>
+              <strong>📅</strong>
+              <span>Reporte comparativo: compara dos fechas y descubre si el negocio mejoró o bajó.</span>
+            </div>
+            <div>
+              <strong>📄</strong>
+              <span>Descarga el reporte en PDF para revisar, presentar o tomar decisiones con el equipo.</span>
+            </div>
+            <div>
+              <strong>🎯</strong>
+              <span>Identifica qué productos reponer primero según rentabilidad y velocidad de venta.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="diagnostic-holo" aria-hidden="true">
+          <div class="diagnostic-ring"></div>
+
+          <div class="diagnostic-center-card">
+            <small>Estado del producto</small>
+            <strong>STAR ⭐</strong>
+            <span>Alta rotación · Buena utilidad · Reponer ya</span>
+          </div>
+
+          <div class="diagnostic-chip diagnostic-chip-one">Producto estrella</div>
+          <div class="diagnostic-chip diagnostic-chip-two">Dinero quieto</div>
+          <div class="diagnostic-chip diagnostic-chip-three">Bajo stock</div>
+          <div class="diagnostic-chip diagnostic-chip-four">Reporte PDF</div>
+        </div>
+      </div>
+
+      <div class="intelligence-grid" style="margin-top:24px">
+        <article class="intelligence-card intelligence-main">
+          <div class="intelligence-icon">🧠</div>
+          <h3>El sistema clasifica, tú decides con información</h3>
+          <p>
+            Cada producto recibe una etiqueta según su comportamiento real.
+            Ya no tienes que adivinar qué comprar: el sistema te lo dice con números.
+          </p>
+          <div class="smart-tags">
+            <span>⭐ Estrella</span>
+            <span>📦 Bajo stock</span>
+            <span>💤 Dormido</span>
+            <span>🚫 Sin movimiento</span>
+            <span>📉 Pérdida</span>
+            <span>💰 Dinero quieto</span>
+          </div>
+        </article>
+
+        <article class="intelligence-card">
+          <div class="intelligence-icon">📅</div>
+          <h3>Reporte comparativo inteligente</h3>
+          <p>
+            Compara hoy contra ayer, esta semana contra la anterior o cualquier
+            período que elijas. El sistema explica en lenguaje sencillo qué mejoró
+            y qué debes atender.
+          </p>
+        </article>
+
+        <article class="intelligence-card">
+          <div class="intelligence-icon">📄</div>
+          <h3>Descargable en PDF</h3>
+          <p>
+            Exporta el diagnóstico completo para revisarlo, presentarlo a tu equipo
+            o guardarlo como respaldo de tus decisiones comerciales.
+          </p>
+        </article>
+      </div>
+
+      <div class="loyalty-grid" style="margin-top:24px">
+        <article class="loyalty-card">
+          <div class="loyalty-icon">🎉</div>
+          <h3>Fechas especiales y temporadas</h3>
+          <p>Descubre qué productos se venden más en fechas especiales y en cada temporada, para preparar inventario y promociones a tiempo.</p>
+        </article>
+        <article class="loyalty-card">
+          <div class="loyalty-icon">🎁</div>
+          <h3>Productos en combo</h3>
+          <p>Identifica qué productos se venden juntos y arma combos que suben el ticket promedio con datos reales.</p>
+        </article>
+        <article class="loyalty-card">
+          <div class="loyalty-icon">👗</div>
+          <h3>Talla, color y referencia</h3>
+          <p>Sabe qué talla, color o referencia de cada producto tiene mejor salida, para comprar con criterio y no quedarte con lo que no rota.</p>
+        </article>
+        <article class="loyalty-card">
+          <div class="loyalty-icon">⭐</div>
+          <h3>Estrella vs. dinero quieto</h3>
+          <p>Reconoce tus productos estrella para promoverlos y detecta la mercancía quieta que tiene tu dinero estancado.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 9: RITMO DE VENTA -->
+    <section class="sales-rhythm-section" id="ritmo-venta">
+      <div class="section-header">
+        <span>Inteligencia avanzada de ritmo de venta</span>
+        <h2>Sabe cuándo, cómo y por qué se venden tus productos antes de que sea tarde</h2>
+        <p>
+          No solo ves qué se vendió: el sistema descubre en qué horarios vendes más,
+          qué productos se compran juntos, qué vendedor los mueve, qué fechas generan
+          picos y cuáles productos puedes promover hoy mismo para aumentar ingresos.
+        </p>
+      </div>
+
+      <div class="rhythm-dashboard">
+        <div class="heatmap-card">
+          <div class="heatmap-header">
+            <div>
+              <span>Mapa de calor de ventas</span>
+              <strong>Por día y hora</strong>
+            </div>
+            <small>Pasa el mouse</small>
+          </div>
+
+          <div class="heatmap-grid">
+            <span class="level-1"></span><span class="level-2"></span><span class="level-3"></span>
+            <span class="level-4"></span><span class="level-2"></span><span class="level-5"></span>
+            <span class="level-3"></span>
+            <span class="level-2"></span><span class="level-1"></span><span class="level-4"></span>
+            <span class="level-5"></span><span class="level-3"></span><span class="level-2"></span>
+            <span class="level-1"></span>
+            <span class="level-3"></span><span class="level-4"></span><span class="level-5"></span>
+            <span class="level-5"></span><span class="level-4"></span><span class="level-3"></span>
+            <span class="level-2"></span>
+            <span class="level-1"></span><span class="level-2"></span><span class="level-3"></span>
+            <span class="level-4"></span><span class="level-5"></span><span class="level-4"></span>
+            <span class="level-3"></span>
+          </div>
+        </div>
+
+        <div class="rhythm-cards">
+          <article>
+            <strong>⏱ Horas fuertes</strong>
+            <span>Descubre en qué horarios exactos vende más cada producto y actúa en esos momentos.</span>
+          </article>
+          <article>
+            <strong>🎁 Combos inteligentes</strong>
+            <span>El sistema detecta qué productos se compran juntos para que crees promociones con datos.</span>
+          </article>
+          <article>
+            <strong>📈 Productos en crecimiento</strong>
+            <span>Identifica qué referencias están subiendo para reforzarlas antes de que escaseen.</span>
+          </article>
+          <article>
+            <strong>🏆 Dashboard ejecutivo</strong>
+            <span>Vista rápida con los más vendidos, los más rentables, alertas clave y oportunidades del día.</span>
+          </article>
+        </div>
+      </div>
+
+      <div class="rhythm-features">
+        <span>🌡 Mapa de calor por día y hora</span>
+        <span>🔮 Pronóstico de próxima venta</span>
+        <span>🎁 Combos automáticos</span>
+        <span>📐 Análisis por talla y color</span>
+        <span>📅 Fechas especiales y quincenas</span>
+        <span>🏅 Ranking por franja horaria</span>
+        <span>👤 Análisis por vendedor</span>
+        <span>👥 Análisis por cliente</span>
+        <span>⏳ Tiempo promedio entre ventas</span>
+        <span>📆 Temporadas fuertes por mes</span>
+        <span>📉 Productos en caída</span>
+        <span>💡 Productos a promocionar hoy</span>
+        <span>🔢 Análisis ABC</span>
+        <span>⚠️ Detección de canibalización</span>
+        <span>📊 Rentabilidad por horario</span>
+        <span>🛒 Recomendación de compra</span>
+        <span>😴 Dormidos con oportunidad</span>
+        <span>🏢 Dashboard ejecutivo</span>
+      </div>
+    </section>
+
+    <section class="supplier-section" id="proveedores-inteligentes">
+      <div class="section-header">
+        <span>Proveedores y compras inteligentes</span>
+        <h2>Compra con más criterio y escoge el proveedor más conveniente</h2>
+        <p>
+          El sistema permite relacionar proveedores con los productos que venden,
+          comparar precios de compra y saber rápidamente quién ofrece cada referencia,
+          a qué valor y dónde conviene invertir el dinero del inventario.
+        </p>
+      </div>
+
+      <div class="supplier-panel">
+        <div class="supplier-copy">
+          <span>Control de abastecimiento</span>
+          <h2>Saber quién vende qué, a qué precio y cuál opción deja mejor margen</h2>
+          <p>
+            Ya no compras a ciegas. Puedes revisar proveedores activos o inactivos,
+            productos asociados, precios de compra, diferencias entre proveedores y
+            oportunidades para abastecerte mejor sin afectar la rentabilidad.
+          </p>
+
+          <div class="supplier-list">
+            <div>
+              <strong>01</strong>
+              <span>Relación de productos con cada proveedor.</span>
+            </div>
+            <div>
+              <strong>02</strong>
+              <span>Comparación de precios de compra por proveedor.</span>
+            </div>
+            <div>
+              <strong>03</strong>
+              <span>Identificación rápida del proveedor más barato o más conveniente.</span>
+            </div>
+            <div>
+              <strong>04</strong>
+              <span>Mejor planeación de compras, reposición y abastecimiento.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="supplier-compare" aria-hidden="true">
+          <div class="supplier-table-card">
+            <div class="supplier-table-title">
+              <span>Comparativo de proveedores</span>
+              <strong>Producto: Bota cuero</strong>
+            </div>
+
+            <div class="supplier-row supplier-row-best">
+              <span>Proveedor A</span>
+              <strong>$ 82.000</strong>
+              <small>Mejor precio</small>
+            </div>
+
+            <div class="supplier-row">
+              <span>Proveedor B</span>
+              <strong>$ 89.500</strong>
+              <small>Entrega rápida</small>
+            </div>
+
+            <div class="supplier-row">
+              <span>Proveedor C</span>
+              <strong>$ 94.000</strong>
+              <small>Stock alto</small>
+            </div>
+
+            <div class="supplier-saving">
+              <small>Ahorro estimado al escoger mejor proveedor</small>
+              <strong data-count="12000" data-prefix="$ " data-suffix=" por unidad">$ 12.000 por unidad</strong>
+            </div>
+          </div>
+
+          <div class="supplier-mini-card supplier-mini-one">Precio de compra</div>
+          <div class="supplier-mini-card supplier-mini-two">Producto por proveedor</div>
+          <div class="supplier-mini-card supplier-mini-three">Mejor margen</div>
+        </div>
+      </div>
+
+      <div class="supplier-novedades">
+        <span class="supplier-novedades-flag">✨ Novedades en “Proveedor por Producto”</span>
+        <h2 class="supplier-novedades-title">Compara proveedores y decide la mejor compra al instante</h2>
+      </div>
+
+      <div class="diagnostic-panel">
+        <div class="diagnostic-copy">
+          <span>Comparar · proyectar · registrar</span>
+          <h2>El sistema te dice cuál comprar, cuánto ganas y en cuánto lo vendes</h2>
+          <p>
+            “Proveedor por Producto” ahora no solo compara: resalta el mejor proveedor,
+            calcula tu ganancia real y proyecta la compra antes de gastar un peso. Y
+            cuando decides, pasas la compra a egresos con un solo clic.
+          </p>
+
+          <div class="diagnostic-list">
+            <div>
+              <strong>🏷️</strong>
+              <span>Identifica automáticamente el proveedor <strong style="color:var(--gold-light)">más barato</strong> y el de <strong style="color:var(--gold-light)">mayor ganancia</strong>, resaltados con etiquetas y colores.</span>
+            </div>
+            <div>
+              <strong>📊</strong>
+              <span>Margen de ganancia real por proveedor: ves cuánto ganas y el % de margen sobre el precio de venta.</span>
+            </div>
+            <div>
+              <strong>🔮</strong>
+              <span>Pronóstico de compra (nueva ventana): pones cuántas unidades quieres comprar y obtienes total a pagar (con opción de IVA), ganancia esperada y tiempo estimado de venta según tu ritmo histórico.</span>
+            </div>
+            <div>
+              <strong>✏️</strong>
+              <span>Costo del proveedor editable, por si cambió el precio: el sistema recalcula todo al instante.</span>
+            </div>
+            <div>
+              <strong>🧭</strong>
+              <span>Registro directo en egresos: con un clic pasas a registrar la compra con proveedor, producto, costo y cantidad ya rellenados.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="forecast-window" aria-hidden="true">
+          <div class="forecast-head">
+            <div class="forecast-dots"><span></span><span></span><span></span></div>
+            <strong>Pronóstico de compra</strong>
+          </div>
+
+          <div class="forecast-product">
+            <span>Producto</span>
+            <strong>Bota cuero</strong>
+          </div>
+
+          <div class="forecast-suppliers">
+            <div class="forecast-supplier is-cheapest">
+              <div class="forecast-supplier-top">
+                <span>Proveedor A</span>
+                <em class="tag tag-cheap">Más barato</em>
+              </div>
+              <div class="forecast-supplier-meta">
+                <span>Costo <strong>$ 82.000</strong></span>
+                <span>Margen <strong>38%</strong></span>
+              </div>
+            </div>
+
+            <div class="forecast-supplier is-best-margin">
+              <div class="forecast-supplier-top">
+                <span>Proveedor C</span>
+                <em class="tag tag-margin">Mayor ganancia</em>
+              </div>
+              <div class="forecast-supplier-meta">
+                <span>Costo <strong>$ 94.000</strong></span>
+                <span>Margen <strong>41%</strong></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="forecast-input-row">
+            <span>Unidades a comprar</span>
+            <span class="forecast-qty">20 <em>✏️</em></span>
+          </div>
+
+          <div class="forecast-results">
+            <div class="forecast-result">
+              <small>Total a pagar <em>(IVA inc.)</em></small>
+              <strong>$ 1.951.600</strong>
+            </div>
+            <div class="forecast-result">
+              <small>Ganancia esperada</small>
+              <strong>$ 1.260.000</strong>
+            </div>
+            <div class="forecast-result forecast-result-wide">
+              <small>Tiempo estimado de venta</small>
+              <strong>≈ 16 días según tu ritmo</strong>
+            </div>
+          </div>
+
+          <div class="forecast-cta">→ Registrar en egresos</div>
+        </div>
+      </div>
+
+      <div class="loyalty-grid">
+        <article class="loyalty-card">
+          <div class="loyalty-icon">💳</div>
+          <h3>A quién le debes más</h3>
+          <p>Proveedores ordenados por deuda: ve de inmediato cuáles tienen los saldos más altos y controla lo que debes antes de volver a comprar.</p>
+        </article>
+        <article class="loyalty-card">
+          <div class="loyalty-icon">📦</div>
+          <h3>Qué le compras a cada uno</h3>
+          <p>Conoce qué productos le compras más a cada proveedor y cuál mueve más mercancía para tu negocio.</p>
+        </article>
+        <article class="loyalty-card">
+          <div class="loyalty-icon">💧</div>
+          <h3>Impacto en caja y rentabilidad</h3>
+          <p>Mira cómo cada compra afecta tu caja y tu margen, para comprar con datos, negociar mejor y decidir antes de invertir.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="loyalty-section" id="empleados-control">
+      <div class="section-header">
+        <span>Control de empleados</span>
+        <h2>Cada empleado, con sus ventas, pagos, comisiones y préstamos al día</h2>
+        <p>
+          Cura POS lleva el control completo de tu equipo. Sabes exactamente qué ha
+          vendido cada empleado, cuánto se le ha pagado, qué préstamos ha sacado, qué
+          saldo tiene pendiente y qué tan rentable es para el negocio. Funciona igual si
+          pagas sueldo fijo o si manejas comisiones por venta.
+        </p>
+      </div>
+
+      <div class="diagnostic-panel">
+        <div class="diagnostic-copy">
+          <span>Ventas, nómina y comisiones</span>
+          <h2>Todo lo de tu equipo, claro y en un solo lugar</h2>
+          <p>
+            Olvídate de los cálculos en papel. El sistema registra cada venta del
+            empleado, suma sus comisiones, descuenta préstamos o adelantos y te muestra
+            el saldo exacto que le debes o que te debe.
+          </p>
+
+          <div class="diagnostic-list">
+            <div>
+              <strong>🧾</strong>
+              <span>Revisa qué ventas ha hecho cada empleado y cuánto ha vendido en total.</span>
+            </div>
+            <div>
+              <strong>💵</strong>
+              <span>Controla cuánto se le ha pagado y cuánto queda pendiente por pagar.</span>
+            </div>
+            <div>
+              <strong>🤝</strong>
+              <span>Registra préstamos y adelantos, y descuéntalos del saldo automáticamente.</span>
+            </div>
+            <div>
+              <strong>📊</strong>
+              <span>Mide qué tan rentable es cada empleado para el negocio.</span>
+            </div>
+            <div>
+              <strong>⚙️</strong>
+              <span>Funciona con sueldo fijo o con comisiones por venta, como manejes la nómina.</span>
+            </div>
+            <div>
+              <strong>👤</strong>
+              <span>Cada empleado tiene su propio perfil con su historial completo.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="diagnostic-holo" aria-hidden="true">
+          <div class="diagnostic-ring"></div>
+
+          <div class="diagnostic-center-card">
+            <small>Empleado · Jafet</small>
+            <strong style="font-size:1.85rem">$ 3.808.500</strong>
+            <span>Comisión generada · saldo pendiente por pagar</span>
+          </div>
+
+          <div class="diagnostic-chip diagnostic-chip-one">Ventas</div>
+          <div class="diagnostic-chip diagnostic-chip-two">Comisiones</div>
+          <div class="diagnostic-chip diagnostic-chip-three">Préstamos</div>
+          <div class="diagnostic-chip diagnostic-chip-four">Saldo y pagos</div>
+        </div>
+      </div>
+
+      <div class="loyalty-grid">
+        <article class="loyalty-card">
+          <div class="loyalty-icon">🧾</div>
+          <h3>Ventas por empleado</h3>
+          <p>Cuánto ha vendido cada quien, con qué productos y en qué períodos. Sabes quién impulsa el negocio.</p>
+        </article>
+        <article class="loyalty-card">
+          <div class="loyalty-icon">💵</div>
+          <h3>Pagos y comisiones</h3>
+          <p>Comisiones calculadas solas, pagos registrados y saldo exacto. Sin errores ni cuentas a mano.</p>
+        </article>
+        <article class="loyalty-card">
+          <div class="loyalty-icon">🤝</div>
+          <h3>Préstamos y adelantos</h3>
+          <p>Lleva el control de lo que cada empleado ha sacado y descuéntalo automáticamente de su saldo.</p>
+        </article>
+        <article class="loyalty-card">
+          <div class="loyalty-icon">📊</div>
+          <h3>Rentabilidad real</h3>
+          <p>Mide cuánto deja cada empleado al negocio para tomar mejores decisiones de equipo.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="diagnostic-section booking-section" id="agenda-citas">
+      <div class="section-header">
+        <span>Agenda de citas 24/7</span>
+        <h2>Tus clientes reservan solos, tú solo atiendes</h2>
+        <p>
+          Una página pública de reservas donde el cliente escoge el servicio,
+          la persona y la hora, y agenda su cita a cualquier hora del día,
+          sin llamadas y sin registrarse.
+        </p>
+      </div>
+
+      <div class="diagnostic-panel">
+        <div class="diagnostic-copy">
+          <span>Reservas en línea</span>
+          <h2>Una agenda que trabaja por ti las 24 horas</h2>
+          <p>
+            Las citas agendadas quedan visibles al instante: cada empleado ve
+            las citas que tiene al día según el servicio que escogió el cliente,
+            y maneja su propio horario.
+          </p>
+
+          <div class="diagnostic-list">
+            <div>
+              <strong>01</strong>
+              <span>Tus clientes agendan citas 24/7, sin login y con disponibilidad en tiempo real.</span>
+            </div>
+
+            <div>
+              <strong>02</strong>
+              <span>Cada empleado ve las citas que tiene al día según el servicio escogido.</span>
+            </div>
+
+            <div>
+              <strong>03</strong>
+              <span>El cliente puede cancelar o reagendar su cita con un enlace seguro por correo.</span>
+            </div>
+
+            <div>
+              <strong>04</strong>
+              <span>Cada empleado define su propio horario y marca las horas que no trabaja.</span>
+            </div>
+
+            <div>
+              <strong>05</strong>
+              <span>Protección anti-bots con Cloudflare Turnstile: cero reservas falsas.</span>
+            </div>
+
+            <div>
+              <strong>06</strong>
+              <span>Panel interno con agenda, sillas o puestos, horarios y tiempo libre.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="diagnostic-holo" aria-hidden="true">
+          <div class="diagnostic-ring"></div>
+
+          <div class="diagnostic-center-card">
+            <small>Próxima cita · Silla 2</small>
+            <strong>3:30 PM</strong>
+            <span>Corte + barba · Confirmada por correo</span>
+          </div>
+
+          <div class="diagnostic-chip diagnostic-chip-one">Reservar 24/7</div>
+          <div class="diagnostic-chip diagnostic-chip-two">Reagendar</div>
+          <div class="diagnostic-chip diagnostic-chip-three">Cancelar</div>
+          <div class="diagnostic-chip diagnostic-chip-four">Mi agenda del día</div>
+        </div>
+      </div>
+
+      <div class="loyalty-grid booking-grid">
+        <article class="loyalty-card">
+          <div class="loyalty-icon">📅</div>
+          <h3>Reservan sin registrarse</h3>
+          <p>
+            El cliente ve servicios, sillas o puestos y la disponibilidad
+            en tiempo real, y agenda en segundos desde su celular.
+          </p>
+        </article>
+
+        <article class="loyalty-card">
+          <div class="loyalty-icon">✉️</div>
+          <h3>Confirmación por correo</h3>
+          <p>
+            Cada cita llega con un enlace seguro para reagendar o cancelar,
+            con límites que tú configuras. Cero confusiones.
+          </p>
+        </article>
+
+        <article class="loyalty-card">
+          <div class="loyalty-icon">⏰</div>
+          <h3>Horario de cada empleado</h3>
+          <p>
+            Cada quien pone su horario y sus horas libres, y solo recibe
+            citas cuando de verdad está disponible.
+          </p>
+        </article>
+
+        <article class="loyalty-card">
+          <div class="loyalty-icon">🗓️</div>
+          <h3>Agenda del día, clara</h3>
+          <p>
+            Cada empleado ve sus citas del día según el servicio escogido,
+            y tú controlas todo desde el panel interno.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="diagnostic-section" id="facturacion-electronica">
+      <div class="section-header">
+        <span>Facturación electrónica</span>
+        <h2>Factura en segundos y deja el papeleo en el pasado</h2>
+        <p>
+          Cada venta puede generar su factura electrónica al instante: comprobantes,
+          PDFs y documentos organizados, listos para consultar, descargar o enviar
+          al cliente por correo.
+        </p>
+      </div>
+
+      <div class="diagnostic-panel">
+        <div class="diagnostic-copy">
+          <span>Documentos sin esfuerzo</span>
+          <h2>Vendes, y la factura sale sola</h2>
+          <p>
+            Olvídate de hacer facturas a mano. El sistema genera el documento,
+            lo guarda asociado al cliente y a la venta, y te deja todo el
+            historial organizado para consultarlo cuando lo necesites.
+          </p>
+
+          <div class="diagnostic-list">
+            <div>
+              <strong>01</strong>
+              <span>Factura electrónica generada directamente desde la venta.</span>
+            </div>
+
+            <div>
+              <strong>02</strong>
+              <span>Comprobantes y PDFs descargables al instante.</span>
+            </div>
+
+            <div>
+              <strong>03</strong>
+              <span>Envío de la factura al cliente por correo.</span>
+            </div>
+
+            <div>
+              <strong>04</strong>
+              <span>Historial completo: facturas, clientes y documentos generados.</span>
+            </div>
+
+            <div>
+              <strong>05</strong>
+              <span>Todo conectado con caja, IVA y el resumen financiero.</span>
+            </div>
+
+            <div>
+              <strong>06</strong>
+              <span>Consulta cualquier factura en segundos desde el panel.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="diagnostic-holo" aria-hidden="true">
+          <div class="diagnostic-ring"></div>
+
+          <div class="diagnostic-center-card">
+            <small>Factura electrónica</small>
+            <strong>✓ #00125</strong>
+            <span>Emitida y enviada al cliente por correo</span>
+          </div>
+
+          <div class="diagnostic-chip diagnostic-chip-one">PDF al instante</div>
+          <div class="diagnostic-chip diagnostic-chip-two">Comprobantes</div>
+          <div class="diagnostic-chip diagnostic-chip-three">Correo al cliente</div>
+          <div class="diagnostic-chip diagnostic-chip-four">Historial completo</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="hybrid-section" id="automatizacion-respaldo">
+      <div class="section-header">
+        <span>Automatización y respaldo</span>
+        <h2>El negocio trabaja solo, se cuida solo y te avisa a tiempo</h2>
+        <p>
+          Cura POS no espera a que tú hagas todo. Respalda tu información cada día,
+          arma las órdenes de compra, te manda el cierre de caja al correo y te avisa
+          cuando algo necesita tu atención. Menos tareas manuales, cero sustos.
+        </p>
+      </div>
+
+      <div class="hybrid-panel">
+        <article class="hybrid-card">
+          <span>🛡️ Copias de seguridad automáticas</span>
+          <h3>Tu información respaldada todos los días, sin que hagas nada</h3>
+          <p>
+            Respaldo diario completo de ventas, inventario, contabilidad y clientes,
+            comprimido y con rotación de 30 días. Si el equipo estaba apagado a la hora
+            programada, el respaldo se hace al abrir el POS. Restauración completa en un
+            comando, sin depender de programas externos.
+          </p>
+          <div class="cube-tags">
+            <span>Respaldo diario</span>
+            <span>Rotación 30 días</span>
+            <span>Copia en la nube (Drive / OneDrive)</span>
+            <span>Restauración en 1 comando</span>
+            <span>Windows y Mac</span>
+          </div>
+        </article>
+
+        <article class="hybrid-card hybrid-card-gold">
+          <span>🛒 Órdenes de compra inteligentes</span>
+          <h3>El POS detecta qué se agota y arma la orden solo</h3>
+          <p>
+            Agrupa la orden por proveedor, con foto y precios de cada producto, y sugiere
+            la cantidad según tu ritmo real de ventas (faltante + una semana de ventas).
+            Incluye semáforo de urgencia y se envía al proveedor con un clic, con
+            cantidades editables y total estimado en vivo.
+          </p>
+          <div class="cube-tags">
+            <span>Agrupada por proveedor</span>
+            <span>Cantidad sugerida</span>
+            <span>🔴 Crítico · 🟠 Urgente · 🟡 Por reponer</span>
+            <span>Enviar por WhatsApp o correo</span>
+            <span>Total estimado en vivo</span>
+          </div>
+        </article>
+
+        <article class="hybrid-card">
+          <span>🧾 Cierre de caja automático</span>
+          <h3>Todos los días recibes el cierre completo en tu correo</h3>
+          <p>
+            A la hora que elijas llega el corte del día: ventas por método de pago,
+            devoluciones, utilidad bruta y neta, egresos, IVA y 4x1000, y balance final
+            de caja. Con un botón se abre en tu WhatsApp listo para reenviar. Es un corte
+            informativo: el POS sigue vendiendo normal.
+          </p>
+          <div class="cube-tags">
+            <span>Ventas por método de pago</span>
+            <span>Utilidad bruta y neta</span>
+            <span>IVA y 4x1000</span>
+            <span>Balance final de caja</span>
+            <span>Reenvío por WhatsApp</span>
+          </div>
+        </article>
+
+        <article class="hybrid-card hybrid-card-gold">
+          <span>🔔 Notificaciones proactivas</span>
+          <h3>El POS te habla: te avisa antes de que sea un problema</h3>
+          <p>
+            Análisis diario automático con avisos en el POS y por correo: ventas atípicas
+            frente a un día típico, fiados vencidos con cliente, monto y días, y productos
+            que se agotan esta semana. Además compara períodos (día, semana, mes, trimestre
+            y año) y te dice en lenguaje natural si vendiste, ganaste o gastaste más.
+          </p>
+          <div class="cube-tags">
+            <span>Ventas atípicas</span>
+            <span>Fiados vencidos</span>
+            <span>Alertas de agotados</span>
+            <span>Comparación de períodos</span>
+            <span>Centro de notificaciones configurable</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="finance-section" id="finanzas">
+      <div class="finance-panel">
+        <div class="finance-copy">
+          <span>Finanzas e impuestos</span>
+          <h2>Caja, utilidad, IVA y gastos bajo control</h2>
+          <p>
+            Diseñado para que el negocio no solo venda, sino que también entienda
+            cuánto gana realmente después de costos, IVA, gastos operativos,
+            retiros, devoluciones, pagos a proveedores, GMF y deudas. Calcula
+            automáticamente el IVA a favor, el IVA descontable y el no descontable,
+            para que sepas exactamente cuánto pagar o recuperar ante la DIAN.
+          </p>
+
+          <div class="finance-actions">
+            <a href="/ver-caja" class="btn primary">Analizar caja</a>
+            <a href="/resumen-financiero" class="btn glass">Ver finanzas</a>
+          </div>
+        </div>
+
+        <div class="finance-hologram" aria-hidden="true">
+          <div class="holo-ring"></div>
+
+          <div class="holo-card holo-card-main">
+            <small>Utilidad neta</small>
+            <strong>$ 0</strong>
+            <span>Calculada sin tomar IVA como ganancia</span>
+          </div>
+
+          <div class="holo-chip chip-one">IVA a favor</div>
+          <div class="holo-chip chip-two">IVA descontable</div>
+          <div class="holo-chip chip-three">Egresos</div>
+          <div class="holo-chip chip-four">Caja</div>
+          <div class="holo-chip chip-five">GMF</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ANALÍTICA FINANCIERA -->
+    <section class="loyalty-section" id="analitica-financiera">
+      <div class="section-header">
+        <span>Analítica financiera avanzada</span>
+        <h2>Tu empresa entera en números, en tiempo real y en segundos</h2>
+        <p>
+          No es solo un reporte. Son dashboards interactivos que te muestran exactamente
+          cuánto gana tu negocio por segundo, en qué hora vendes más, qué proveedor
+          te debe atención, qué producto lidera el ranking y mucho más.
+          Todo exportable en PDF o CSV.
+        </p>
+      </div>
+
+      <!-- Panel 1: Dashboards -->
+      <div class="loyalty-panel" style="margin-bottom:24px">
+        <div class="loyalty-copy">
+          <span>6 dashboards especializados</span>
+          <h2>Un panel para cada área clave de tu negocio</h2>
+          <p>
+            Cada dashboard va directo al grano: ventas, gastos, proveedores, empleados,
+            balance general y una vista central que lo une todo. Sin pantallas confusas,
+            sin datos de relleno.
+          </p>
+
+          <div class="loyalty-list">
+            <div>
+              <strong>📊</strong>
+              <span><strong style="color:var(--gold-light)">Dashboard central</strong> — Toda la empresa de un vistazo: ventas, utilidad, egresos y estado general.</span>
+            </div>
+            <div>
+              <strong>🧾</strong>
+              <span><strong style="color:var(--gold-light)">Dashboard ventas</strong> — Horas pico, días más fuertes, productos más vendidos y velocidad de venta.</span>
+            </div>
+            <div>
+              <strong>💸</strong>
+              <span><strong style="color:var(--gold-light)">Dashboard gastos</strong> — Cuánto pagas en egresos por segundo, minuto, hora y día. Sin sorpresas.</span>
+            </div>
+            <div>
+              <strong>🤝</strong>
+              <span><strong style="color:var(--gold-light)">Dashboard proveedores</strong> — Ordenados por lo que más les debes y el producto que más les compras.</span>
+            </div>
+            <div>
+              <strong>👥</strong>
+              <span><strong style="color:var(--gold-light)">Dashboard empleados</strong> — Comisiones, pagos, saldos pendientes y rendimiento individual.</span>
+            </div>
+            <div>
+              <strong>📋</strong>
+              <span><strong style="color:var(--gold-light)">Balance general</strong> — Estado financiero real de la empresa, organizable por día, mes o año.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="loyalty-hologram" aria-hidden="true">
+          <div class="loyalty-ring"></div>
+
+          <div class="loyalty-phone">
+            <div class="phone-top"></div>
+            <div class="phone-card">
+              <small>Utilidad generada hoy</small>
+              <strong data-count="2977106" data-prefix="$ ">$ 2.977.106</strong>
+              <span>Actualizada en tiempo real</span>
+            </div>
+            <div class="phone-message">
+              Cada segundo que pasa, el sistema calcula cuánto está ganando tu negocio.
+            </div>
+            <div class="phone-button">Ver dashboard central</div>
+          </div>
+
+          <div class="loyalty-chip loyalty-chip-one">Ventas</div>
+          <div class="loyalty-chip loyalty-chip-two">Gastos</div>
+          <div class="loyalty-chip loyalty-chip-three">Empleados</div>
+          <div class="loyalty-chip loyalty-chip-four">Proveedores</div>
+        </div>
+      </div>
+
+      <!-- Panel 2: Velocidad del dinero + treemaps -->
+      <div class="diagnostic-panel" style="margin-bottom:24px">
+        <div class="diagnostic-copy">
+          <span>Velocidad del negocio en tiempo real</span>
+          <h2>Cuánto gana, gasta y vende tu negocio por segundo</h2>
+          <p>
+            El sistema calcula automáticamente cuánto genera tu empresa en utilidad
+            por segundo, por minuto, por hora y por día. Lo mismo con los egresos
+            y con el tiempo entre ventas: ¿cada cuánto te cae un cliente?
+          </p>
+
+          <div class="diagnostic-list">
+            <div>
+              <strong>⚡</strong>
+              <span>Utilidad generada por segundo, minuto, hora y día — en tiempo real.</span>
+            </div>
+            <div>
+              <strong>💸</strong>
+              <span>Egresos pagados por segundo, minuto, hora y día — para saber cuánto sale realmente.</span>
+            </div>
+            <div>
+              <strong>🛒</strong>
+              <span>Frecuencia de ventas: cada cuánto tiempo se hace una venta en tu negocio.</span>
+            </div>
+            <div>
+              <strong>🏆</strong>
+              <span>Ranking de productos más vendidos y más rentables, ordenados con datos reales.</span>
+            </div>
+            <div>
+              <strong>👗</strong>
+              <span>Qué talla y qué color de cada producto se vende más — para comprar con criterio.</span>
+            </div>
+            <div>
+              <strong>📅</strong>
+              <span>Filtra todo por días, meses o años y compara dos períodos en segundos.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="diagnostic-holo" aria-hidden="true">
+          <div class="diagnostic-ring"></div>
+
+          <div class="diagnostic-center-card">
+            <small>Cada venta tarda en promedio</small>
+            <strong>1h 23m</strong>
+            <span>Frecuencia real de ventas del negocio</span>
+          </div>
+
+          <div class="diagnostic-chip diagnostic-chip-one">Por segundo</div>
+          <div class="diagnostic-chip diagnostic-chip-two">Por hora</div>
+          <div class="diagnostic-chip diagnostic-chip-three">Por día</div>
+          <div class="diagnostic-chip diagnostic-chip-four">Exportar PDF</div>
+        </div>
+      </div>
+
+      <!-- Tarjetas: Treemaps + Ranking + Comparación + Export -->
+      <div class="loyalty-grid">
+        <article class="loyalty-card">
+          <div class="loyalty-icon">🗺️</div>
+          <h3>Treemaps visuales</h3>
+          <p>
+            Ve de golpe qué productos, empleados y áreas del negocio dominan en ventas,
+            utilidad y efectivo con gráficas de mapa de área: qué producto vende más, qué
+            empleado es más rentable y qué área mueve más dinero. Lo grande manda, lo
+            pequeño necesita atención.
+          </p>
+        </article>
+
+        <article class="loyalty-card">
+          <div class="loyalty-icon">🏅</div>
+          <h3>Ranking de productos</h3>
+          <p>
+            Los más vendidos y los más rentables ordenados por posición.
+            Sabes de inmediato cuáles son tus campeones y cuáles están rezagados.
+          </p>
+        </article>
+
+        <article class="loyalty-card">
+          <div class="loyalty-icon">🔍</div>
+          <h3>Comparación por fechas</h3>
+          <p>
+            Compara cualquier período que elijas: esta semana vs. la anterior,
+            este mes vs. el pasado. El sistema muestra qué mejoró y qué bajó.
+          </p>
+        </article>
+
+        <article class="loyalty-card">
+          <div class="loyalty-icon">📥</div>
+          <h3>Exporta todo en PDF o CSV</h3>
+          <p>
+            Cada análisis, reporte y dashboard se puede descargar en PDF para
+            presentar o en CSV para trabajar en Excel. Sin límites, sin complicaciones.
+          </p>
+        </article>
+      </div>
+
+      <div class="diagnostic-panel" style="margin-top:24px">
+        <div class="diagnostic-copy">
+          <span>Cuándo y por qué vende tu negocio</span>
+          <h2>Qué día vendes más, a qué hora y en qué fechas se dispara todo</h2>
+          <p>
+            Con base en tus datos históricos, Cura POS te dice qué día de la semana
+            vendes más, cuál es la hora pico del negocio, en qué franjas se concentran
+            las ventas y qué productos se disparan en fechas especiales. Y te deja
+            comparar fechas o períodos para entender qué pasó antes, qué está pasando
+            ahora y cómo ha cambiado el comportamiento del negocio.
+          </p>
+
+          <div class="diagnostic-list">
+            <div>
+              <strong>📅</strong>
+              <span>El día de la semana en que más vendes, con datos reales.</span>
+            </div>
+            <div>
+              <strong>⏰</strong>
+              <span>La hora pico del negocio y las franjas donde se concentran las ventas.</span>
+            </div>
+            <div>
+              <strong>🎉</strong>
+              <span>Qué productos se venden más en fechas especiales y temporadas.</span>
+            </div>
+            <div>
+              <strong>🔍</strong>
+              <span>Compara dos fechas o períodos: antes vs. ahora, y cómo cambió todo.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="diagnostic-holo" aria-hidden="true">
+          <div class="diagnostic-ring"></div>
+
+          <div class="diagnostic-center-card">
+            <small>Mejor día · hora pico</small>
+            <strong style="font-size:2.4rem">Sábado</strong>
+            <span>Hora pico 3:00 – 5:00 PM · según tu historial</span>
+          </div>
+
+          <div class="diagnostic-chip diagnostic-chip-one">Día fuerte</div>
+          <div class="diagnostic-chip diagnostic-chip-two">Hora pico</div>
+          <div class="diagnostic-chip diagnostic-chip-three">Fechas especiales</div>
+          <div class="diagnostic-chip diagnostic-chip-four">Comparar períodos</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="analytics-section" id="analitica">
+      <div class="section-header">
+        <span>Analítica inteligente</span>
+        <h2>Diagnóstico para vender mejor</h2>
+        <p>
+          Entrada visual para módulos avanzados de diagnóstico, ritmo de ventas,
+          productos rentables, sostenimiento operativo e IA.
+        </p>
+      </div>
+
+      <div class="analytics-grid">
+        <a href="/diagnostico-productos" class="analytics-card">
+          <h3>Diagnóstico de productos</h3>
+          <p>Detecta productos fuertes, débiles, costosos o con margen bajo.</p>
+        </a>
+
+        <a href="/diagnostico-productos-todos" class="analytics-card">
+          <h3>Diagnóstico general</h3>
+          <p>Evalúa todo el inventario con señales financieras y comerciales.</p>
+        </a>
+
+        <a href="/ritmo-ventas-producto" class="analytics-card">
+          <h3>Ritmo por producto</h3>
+          <p>Mide velocidad de venta, rotación y comportamiento individual.</p>
+        </a>
+
+        <a href="/ritmo-ventas-avanzado" class="analytics-card">
+          <h3>Ritmo avanzado</h3>
+          <p>Analiza tendencias por fechas, productos, utilidad y movimiento.</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="hybrid-section" id="solucion-hibrida">
+      <div class="hybrid-panel">
+        <div class="hybrid-card">
+          <span>Software base robusto</span>
+          <h3>Una plataforma completa para operar y controlar</h3>
+          <p>
+            Incluye ventas, inventario, caja, clientes, proveedores, empleados,
+            egresos, ganancias, dashboards, reportes, facturación electrónica
+            y analítica del negocio.
+          </p>
+        </div>
+
+        <div class="hybrid-card hybrid-card-gold">
+          <span>Solución híbrida</span>
+          <h3>2 funciones nuevas elegibles a la medida</h3>
+          <p>
+            Además del software base, el negocio puede escoger 2 funciones
+            adicionales para agregar al sistema, siempre que sean viables y aterrizables.
+            Ese es el gancho: no compras un programa rígido, compras una plataforma
+            que puede crecer con la operación real del negocio.
+          </p>
+        </div>
+      </div>
+
+      <div class="closing-banner">
+        <strong>Más control. Menos trabajo manual. Mejores compras. Más rentabilidad.</strong>
+        <span>Una solución lista para impulsar el negocio y adaptarse a necesidades reales.</span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-brand-head">
+            <span class="brand-mark">
+              <svg class="logo-svg" viewBox="0 0 100 100" aria-hidden="true">
+                <g fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round">
+                  <rect x="4" y="35" width="92" height="30" rx="15" transform="rotate(45 50 50)" />
+                  <rect x="4" y="35" width="92" height="30" rx="15" transform="rotate(-45 50 50)" />
+                </g>
+              </svg>
+            </span>
+            <div>
+              <strong>Cura</strong>
+              <small>Sistema inteligente</small>
+            </div>
+          </div>
+          <p>
+            Software de automatización de empresas con asistente de
+            inteligencia artificial. [Aquí va una descripción corta de tu empresa].
+          </p>
+        </div>
+
+        <nav class="footer-col" aria-label="Plataforma">
+          <strong>Plataforma</strong>
+          <a href="#web-y-citas">Página web</a>
+          <a href="#agenda-citas">Agenda de citas</a>
+          <a href="#chat-ia-negocio">Chat IA Cura</a>
+          <a href="#facturacion-electronica">Facturación electrónica</a>
+          <a href="#fidelizacion-clientes">Fidelización</a>
+        </nav>
+
+        <nav class="footer-col" aria-label="Legal">
+          <strong>Legal</strong>
+          <a href="#">Términos y condiciones</a>
+          <a href="#">Política de privacidad</a>
+          <a href="#">Tratamiento de datos personales (Habeas Data)</a>
+          <a href="#">Política de cookies</a>
+          <a href="#">Política de devoluciones y garantías</a>
+        </nav>
+
+        <div class="footer-col" id="contacto" aria-label="Contacto">
+          <strong>Contacto</strong>
+          <span>📍 [Ciudad, Colombia]</span>
+          <span>📞 [Teléfono / WhatsApp]</span>
+          <span>✉️ [correo@tuempresa.com]</span>
+          <span>🕒 [Horario de atención]</span>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Cura. Todos los derechos reservados.</span>
+        <span>[Razón social] · NIT [000.000.000-0] · [Ciudad, Colombia]</span>
+        <span>Este sitio cumple con la Ley 1581 de 2012 de protección de datos personales.</span>
+      </div>
+    </footer>
+</body>
+</html>
