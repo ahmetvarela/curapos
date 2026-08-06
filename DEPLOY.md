@@ -92,10 +92,26 @@ Nameservers del dominio: `dahlia.ns.cloudflare.com` y `thaddeus.ns.cloudflare.co
 
 ## 5. Estado del HTTPS
 
-Al 5 de agosto de 2026: el sitio funciona en `http://curapos.com`, pero GitHub
-**todavía no había emitido el certificado HTTPS**. No era un error de
-configuración — todo el DNS estaba correcto y verificado, no había registros CAA
-bloqueando. GitHub simplemente tarda entre 15 minutos y 24 horas.
+**✅ RESUELTO (6 de agosto de 2026).** El certificado está `approved` y el HTTPS
+forzado está activo. `https://curapos.com` y `https://www.curapos.com` responden
+200 correctamente.
+
+### Cómo se resolvió (leer si vuelve a pasar)
+
+GitHub no arrancaba la emisión del certificado: llevaba ~1 hora con el DNS
+perfectamente configurado y `https_certificate` seguía en `null`. No era error de
+configuración — no había CAA bloqueando y el dominio no estaba sin verificar.
+
+**Lo que lo destrabó fue quitar y volver a poner el dominio personalizado**, lo
+que fuerza a GitHub a reintentar. Funcionó en menos de un minuto:
+
+```bash
+& "C:\Program Files\GitHub CLI\gh.exe" api -X PUT repos/ahmetvarela/curapos/pages -f "cname="
+# esperar ~15 segundos
+& "C:\Program Files\GitHub CLI\gh.exe" api -X PUT repos/ahmetvarela/curapos/pages -f "cname=curapos.com"
+```
+
+Ojo: al quitar el `cname` el dominio deja de responder unos segundos. Es normal.
 
 ### Cómo revisar si ya salió el certificado
 
