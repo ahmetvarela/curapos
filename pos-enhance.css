@@ -746,3 +746,771 @@
   .forecast-supplier-meta { gap: 14px; }
   .supplier-novedades { margin-top: 28px; }
 }
+
+/* ==========================================================================
+   SANEAMIENTO LEGAL
+   Etiqueta de datos de demostración + avisos legales por sección.
+   ========================================================================== */
+
+.demo-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(233, 200, 116, 0.85);
+  background: rgba(233, 200, 116, 0.1);
+  border: 1px solid rgba(233, 200, 116, 0.22);
+  border-radius: 999px;
+  padding: 3px 9px;
+  white-space: nowrap;
+}
+
+.legal-note {
+  display: flex;
+  gap: 11px;
+  align-items: flex-start;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-left: 2px solid rgba(233, 200, 116, 0.45);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.025);
+  padding: 14px 16px;
+  margin-top: 22px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.62);
+  max-width: 70ch;
+}
+
+.legal-note strong { color: rgba(246, 231, 180, 0.9); font-weight: 600; }
+
+/* ==========================================================================
+   TOPBAR + HERO NUEVOS · SECCIÓN RAZONES · FRANJA · TODO LO QUE INCLUYE
+
+   Nada de este bloque toca el fondo de la página: ni .grid-bg, ni .gold-glow,
+   ni .blue-glow, ni body, ni :root. Solo usa las variables ya definidas.
+   ========================================================================== */
+
+/* ---------- TOPBAR ---------- */
+
+.topbar-nav {
+  gap: 30px;
+}
+
+.topbar-nav a {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+/* el hover del proyecto pasa a dorado; aquí se pide gris -> blanco */
+.topbar-nav a:hover {
+  color: var(--text);
+  text-shadow: none;
+}
+
+/* ---------- HERO: columna de texto ---------- */
+
+.hero-lede-strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.hero-microcopy {
+  margin-top: 14px;
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* ---------- HERO: panel "Olvídate de" ---------- */
+
+/* alto automático: el panel manda, no una altura fija como en la zona 3D */
+.hero-right .visual-zone-panel {
+  height: auto;
+  min-height: 0;
+  display: grid;
+  place-items: center;
+  padding: 26px 0;
+}
+
+.olv-panel {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 392px);
+  padding: 26px 26px 24px;
+  border-radius: 24px;
+  border: 1px solid var(--border-gold);
+  background: linear-gradient(168deg, rgba(28, 25, 14, 0.96), rgba(12, 12, 9, 0.96));
+  box-shadow:
+    0 0 78px -18px rgba(201, 167, 77, 0.42),
+    var(--shadow-dark);
+}
+
+.olv-label {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 8px;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+  color: #cbbe97;
+}
+
+/* el punto verde del proyecto ya trae su propia animación */
+.olv-label .pulse-dot {
+  margin-right: 0;
+}
+
+.olv-title {
+  margin-bottom: 16px;
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 900;
+  letter-spacing: -1px;
+  color: transparent;
+  background: linear-gradient(90deg, var(--gold-light), var(--gold), var(--cyan));
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.olv-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.olv-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  padding: 9.5px 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: var(--muted);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.olv-list li:last-child {
+  border-bottom: 0;
+}
+
+.olv-list svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  margin-top: 2px;
+  color: var(--gold);
+  opacity: 0.75;
+}
+
+.olv-foot {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.olv-foot svg {
+  width: 15px;
+  height: 15px;
+  flex: none;
+  color: var(--gold);
+  opacity: 0.8;
+}
+
+/* ---------- HERO: tres tarjetas flotantes ---------- */
+
+/* íconos SVG monocromáticos en lugar de los emojis a color */
+.float-card .card-icon svg {
+  width: 19px;
+  height: 19px;
+  color: var(--gold);
+}
+
+/* por encima del panel, que lleva z-index 2 */
+.card-hero-ia,
+.card-hero-web,
+.card-hero-clientes {
+  z-index: 3;
+}
+
+.card-hero-ia {
+  top: 6px;
+  left: -72px;
+}
+
+.card-hero-web {
+  top: 45%;
+  right: -74px;
+  animation-delay: 0.9s;
+}
+
+.card-hero-clientes {
+  bottom: 6px;
+  left: -62px;
+  animation-delay: 1.8s;
+}
+
+/* ---------- SECCIÓN: OCHO RAZONES ---------- */
+
+.razones-section {
+  width: min(1200px, 92%);
+  margin: 0 auto 105px;
+  position: relative;
+  z-index: 5;
+}
+
+.razones-header {
+  text-align: left;
+  max-width: none;
+  margin-bottom: 32px;
+}
+
+.razones-header h2 {
+  font-size: clamp(1.6rem, 2.7vw, 2.2rem);
+  margin-bottom: 8px;
+}
+
+.razones-header p {
+  font-size: 1rem;
+}
+
+.razones-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.razon {
+  padding: 24px 22px;
+  border-radius: 20px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(16px);
+  transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+}
+
+.razon:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-gold);
+  background: var(--card-strong);
+}
+
+.razon-num {
+  margin-bottom: 14px;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--gold);
+  opacity: 0.65;
+  font-variant-numeric: tabular-nums;
+}
+
+.razon h3 {
+  margin-bottom: 9px;
+  font-size: 1.18rem;
+  line-height: 1.2;
+  letter-spacing: -0.3px;
+  color: var(--gold-light);
+}
+
+.razon p {
+  font-size: 0.92rem;
+  line-height: 1.58;
+  color: var(--muted);
+}
+
+.razon-wide {
+  grid-column: 1 / -1;
+  padding: 30px 28px;
+  border-color: var(--border-gold);
+  background: linear-gradient(150deg, rgba(201, 167, 77, 0.075), rgba(255, 255, 255, 0.02));
+}
+
+.razon-wide h3 {
+  font-size: 1.42rem;
+  max-width: 26ch;
+}
+
+.razon-wide p {
+  font-size: 1rem;
+  max-width: 74ch;
+}
+
+/* la 01 lleva algo más de brillo que el resto */
+.razon-hero {
+  border-color: rgba(201, 167, 77, 0.5);
+  background: linear-gradient(150deg, rgba(201, 167, 77, 0.14), rgba(0, 229, 255, 0.045) 60%, rgba(255, 255, 255, 0.02));
+  box-shadow: 0 0 60px -28px rgba(201, 167, 77, 0.55);
+}
+
+.razon-hero .razon-num {
+  opacity: 0.95;
+  letter-spacing: 0.1em;
+}
+
+.razon-hero h3 {
+  font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+  line-height: 1.14;
+  max-width: 24ch;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+
+.razon-hero p strong {
+  color: var(--gold-light);
+  font-weight: 600;
+}
+
+.razon-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 20px;
+}
+
+.razon-chips span {
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #cfc9b5;
+  background: rgba(201, 167, 77, 0.09);
+  border: 1px solid rgba(201, 167, 77, 0.22);
+}
+
+/* ---------- FRANJA: MIENTRAS TÚ ATIENDES ---------- */
+
+.mientras-strip {
+  width: 100%;
+  margin: 0 0 105px;
+  padding: 30px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  z-index: 5;
+}
+
+.mientras-inner {
+  width: min(1200px, 92%);
+  margin: 0 auto;
+}
+
+.mientras-head {
+  margin-bottom: 20px;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+  color: var(--gold-light);
+}
+
+.mientras-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.mientras-item {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding: 2px 18px;
+  border-left: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.mientras-item:first-child {
+  border-left: 0;
+  padding-left: 0;
+}
+
+.mientras-item svg {
+  width: 19px;
+  height: 19px;
+  color: var(--gold);
+  opacity: 0.85;
+}
+
+.mientras-item span {
+  font-size: 0.84rem;
+  line-height: 1.42;
+  color: var(--muted);
+}
+
+/* ---------- SECCIÓN: TODO LO QUE INCLUYE CURA ---------- */
+
+.incluye-section {
+  width: min(1200px, 92%);
+  margin: 0 auto 105px;
+  position: relative;
+  z-index: 5;
+}
+
+.incluye-group + .incluye-group {
+  margin-top: 34px;
+}
+
+.incluye-group-title {
+  margin-bottom: 16px;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--gold-light);
+}
+
+/* la cuadrícula reutiliza .hero-stats; aquí se reparte en cuatro columnas */
+.incluye-group .hero-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 0;
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 1040px) {
+  .razones-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .mientras-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px 0;
+  }
+
+  .mientras-item:nth-child(3n + 1) {
+    border-left: 0;
+    padding-left: 0;
+  }
+
+  .incluye-group .hero-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* apiladas bajo el panel, sin posición absoluta ni flotación */
+  .hero-right .visual-zone-panel .float-card {
+    position: static;
+    width: 100%;
+    margin-top: 12px;
+    animation: none;
+  }
+
+  .hero-right .visual-zone-panel {
+    display: block;
+    padding: 0;
+  }
+
+  .olv-panel {
+    width: 100%;
+  }
+}
+
+@media (max-width: 780px) {
+  /* el proyecto oculta .nav-links y .topbar-actions a la vez; aquí se pide
+     dejar visible el botón Contactar y ocultar solo los enlaces del centro */
+  .topbar-actions {
+    display: flex;
+  }
+
+  .topbar-nav {
+    display: none;
+  }
+}
+
+@media (max-width: 620px) {
+  .razones-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .razon-wide {
+    padding: 24px 20px;
+  }
+
+  .razon-wide h3 {
+    font-size: 1.25rem;
+  }
+
+  .mientras-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .mientras-item:nth-child(3n + 1) {
+    border-left: 1px solid rgba(255, 255, 255, 0.06);
+    padding-left: 18px;
+  }
+
+  .mientras-item:nth-child(2n + 1) {
+    border-left: 0;
+    padding-left: 0;
+  }
+
+  .incluye-group .hero-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .olv-title {
+    font-size: 1.55rem;
+  }
+}
+
+/* ==========================================================================
+   REDES SOCIALES EN EL FOOTER
+
+   Clase propia (no .social-links) a propósito: pos-home-3d.js busca
+   .social-links para moverla al hero en móvil, y no queremos que se lleve
+   estos iconos. Mismo aspecto que los botones del topbar original.
+   ========================================================================== */
+
+.footer-social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.footer-social a {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 13px;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.06);
+  transition: color 0.25s ease, border-color 0.25s ease,
+    background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.footer-social a svg {
+  width: 19px;
+  height: 19px;
+}
+
+.footer-social a:hover {
+  color: var(--gold-light);
+  border-color: var(--border-gold);
+  background: rgba(201, 167, 77, 0.12);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-gold);
+}
+
+/* ==========================================================================
+   HERO · PROPORCIONES EN PANTALLAS GRANDES
+
+   Todo lo de aquí abajo vive dentro de @media (min-width: 1041px), así que
+   NO afecta a móvil ni a tablet. Se usa 1041px y no 1061px a propósito: el
+   proyecto colapsa el hero a una sola columna en @media (max-width: 1040px),
+   y arrancar en 1061 dejaría la franja 1041-1060px con el layout de dos
+   columnas pero sin estas correcciones.
+
+   No toca el fondo: ni .grid-bg, ni .gold-glow, ni .blue-glow, ni body.
+   ========================================================================== */
+
+@media (min-width: 1041px) {
+
+  /* --- 2. contenedor: 1200px máximo, centrado, 28px de padding lateral --- */
+  /* min-height:auto anula el calc(100vh - 82px) de pos-home-3d.css (y el
+     calc(100svh - 82px) de su @supports). Ese min-height era la causa de las
+     dos cosas a la vez: estiraba el hero a la altura de la ventana, lo que
+     dejaba ~300px muertos debajo, y al centrar cada columna dentro de una
+     fila mucho más alta que su contenido, separaba el badge del panel.
+     Sin él, la fila mide lo que mide la columna más alta y ambas quedan
+     alineadas arriba. */
+  .hero {
+    width: min(1200px, 100%);
+    min-height: auto;
+    margin: 0 auto;
+    padding: 34px 28px 68px;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.88fr);
+    gap: 64px;
+    align-items: center;
+  }
+
+  /* --- 1. titular en tres líneas --- */
+  /* 14ch y no 11ch: la maqueta usa Archivo y el proyecto usa Sora 800, que es
+     más ancha. Medido en el navegador con la fuente real: "Tú solo vende."
+     ocupa 12.48ch, y "Tú solo vende. Del" 15.72ch. El corte correcto solo
+     ocurre entre esos dos valores; 11ch partía el titular en cinco líneas. */
+  .hero-content h1 {
+    font-size: clamp(44px, 5.4vw, 74px);
+    line-height: 0.99;
+    letter-spacing: -0.04em;
+    max-width: 14ch;
+    margin-bottom: 24px;
+  }
+
+  /* el proyecto fuerza un salto con display:block, lo que partía el titular
+     en cinco líneas; en línea deja que max-width:11ch haga el corte */
+  .hero-content h1 span {
+    display: inline;
+  }
+
+  /* --- respiración de la columna de texto --- */
+  .hero-content .badge {
+    margin-bottom: 26px;
+  }
+
+  /* 44ch: le quita ancho al párrafo justo donde la tarjeta "Tus clientes
+     vuelven" se le montaba encima */
+  .hero-content p {
+    font-size: 17px;
+    line-height: 1.62;
+    max-width: 44ch;
+    margin-bottom: 30px;
+  }
+
+  .hero-actions {
+    margin-bottom: 13px;
+  }
+
+  /* más específico que .hero-content p, que si no le gana por especificidad
+     y renderiza esta línea al tamaño del párrafo grande */
+  /* Al quitar el min-height del hero, el aire bajo la línea pequeña se quedó
+     en 68px (el padding-bottom del hero). El respiro que le falta se lo pone
+     la sección, no el hero: 68 + 40 = 108px de separación real. */
+  .razones-section {
+    padding-top: 40px;
+  }
+
+  /* max-width:none para que quepa en un solo renglón; sin white-space:nowrap,
+     que a 1280px sí necesita poder partirse */
+  .hero-content p.hero-microcopy {
+    font-size: 13.5px;
+    line-height: 1.6;
+    max-width: none;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  /* --- 3. panel: el escenario se ajusta al panel --- */
+  /* .visual-zone arrastra un margin-top:-30px pensado para la zona 3D de
+     650px; con el panel nuevo empujaba todo bajo el topbar y dejaba la
+     tarjeta superior fuera de pantalla */
+  .hero-right .visual-zone-panel {
+    padding: 0;
+    margin-top: 0;
+  }
+
+  .olv-panel {
+    width: min(100%, 392px);
+    border-radius: 22px;
+    padding: 26px 26px 24px;
+  }
+
+  /* --- 4. etiqueta y título del panel --- */
+  .olv-label {
+    font-size: 11.5px;
+    letter-spacing: 0.17em;
+    margin-bottom: 8px;
+  }
+
+  .olv-title {
+    font-size: 29px;
+    letter-spacing: -0.03em;
+    margin-bottom: 16px;
+  }
+
+  /* --- 6. filas más compactas --- */
+  .olv-list li {
+    gap: 11px;
+    padding: 9.5px 0;
+    font-size: 14.3px;
+    line-height: 1.4;
+  }
+
+  /* --- 5. tarjetas flotantes: sobre el panel, nunca sobre su texto --- */
+  .card-hero-ia,
+  .card-hero-web,
+  .card-hero-clientes {
+    width: 198px;
+    padding: 13px 14px;
+    border-radius: 14px;
+  }
+
+  .card-hero-ia strong,
+  .card-hero-web strong,
+  .card-hero-clientes strong {
+    font-size: 13.5px;
+    margin: 9px 0 4px;
+  }
+
+  .card-hero-ia small,
+  .card-hero-web small,
+  .card-hero-clientes small {
+    font-size: 12.2px;
+    line-height: 1.45;
+  }
+
+}
+
+/* --- 5. tarjetas flotantes en su posición absoluta ---------------------- */
+/* Solo a partir de 1280px. El contenedor del hero se topa en 1200px, así que
+   por debajo de 1280 no queda margen lateral suficiente y la tarjeta derecha
+   se sale de la ventana (verificado: a 1200px se recorta 44px). Por debajo se
+   apilan, ver el bloque siguiente. */
+@media (min-width: 1280px) {
+
+  /* Las dos tarjetas de la izquierda se corren al canal que queda entre las
+     dos columnas (56px de gap): su borde derecho queda antes de donde empieza
+     el texto del panel, así muerden el borde sin taparlo. Subir solo el top
+     no bastaba: la tarjeta se salía por encima de la ventana. */
+  .card-hero-ia {
+    top: -26px;
+    left: -132px;
+    animation-delay: 0s;
+  }
+
+  /* 248px y no 196px: la animación floatCard levanta la tarjeta hasta 20px,
+     y a 196 caía sobre la fila más larga de la lista ("...hacerles
+     promoción") y le comía las últimas letras. 248 - 20 la deja siempre por
+     debajo de esa fila. */
+  .card-hero-web {
+    top: 248px;
+    right: -72px;
+    bottom: auto;
+    animation-delay: -2.6s;
+  }
+
+  /* -132 igual que la de arriba. Con el párrafo ya en 44ch y la columna
+     izquierda más ancha, a -132 la tarjeta queda en el canal entre columnas:
+     ni alcanza el párrafo (que termina mucho antes) ni el texto del panel. */
+  .card-hero-clientes {
+    bottom: -28px;
+    left: -132px;
+    top: auto;
+    animation-delay: -5.2s;
+  }
+}
+
+/* Franja intermedia: dos columnas, pero sin sitio para las tarjetas sueltas.
+   Se apilan bajo el panel, igual que en tablet. No afecta a <=1040px. */
+/* el .98 evita la zona muerta cuando el viewport tiene ancho fraccional */
+@media (min-width: 1041px) and (max-width: 1279.98px) {
+  .hero-right .visual-zone-panel {
+    display: block;
+  }
+
+  .hero-right .visual-zone-panel .float-card {
+    position: static;
+    width: 100%;
+    margin-top: 12px;
+    animation: none;
+  }
+
+  .olv-panel {
+    width: 100%;
+  }
+}
